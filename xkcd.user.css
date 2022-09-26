@@ -6,7 +6,7 @@
 @author       adjagu
 @homepageURL  https://github.com/adjagu/usercss/
 @supportURL   https://github.com/adjagu/usercss/issues
-@updateURL    https://github.com/adjagu/usercss/blob/main/xkcd.user.css
+@updateURL    https://github.com/adjagu/usercss/raw/main/xkcd.user.css
 @license      GPL-2.0-only
 @preprocessor stylus
 @var select   theme     "Theme"     ["light", "dark"]
