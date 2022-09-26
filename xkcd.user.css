@@ -1,0 +1,114 @@
+/* ==UserStyle==
+@name         xkcd
+@namespace    https://github.com/adjagu/usercss/
+@version      0.0.1
+@description  xkcd
+@author       adjagu
+@homepageURL  https://github.com/adjagu/usercss/
+@supportURL   https://github.com/adjagu/usercss/issues
+@updateURL    https://github.com/adjagu/usercss/blob/main/xkcd.user.css
+@license      GPL-2.0-only
+@preprocessor stylus
+@var select   theme     "Theme"     ["light", "dark"]
+@var checkbox show-menu "Show Menu" 1
+@var checkbox dim-img   "Dim Image" 0
+@var range    how-dim   "How Dim?"  [1, .1, 1, .1]
+==/UserStyle== */
+
+@-moz-document url("https://xkcd.com/"), url("https://xkcd.com/archive/"), regexp("https://xkcd.com/[0-9]{1,4}/")
+
+  if theme == dark
+    color-accent     = #80b789
+    color-background = #1d1d1d
+    color-foreground = #e7e7e7
+  else if theme == light
+    color-accent     = #36513b
+    color-background = #ffffff
+    color-foreground = #1d1d1d
+
+  html
+    font-family: sans-serif
+    font-size: 1rem
+    scrollbar-color: color-accent transparent
+
+  body
+    all: revert
+    background-color: color-background
+    color: color-foreground
+    margin: 0
+
+  a
+    color: color-accent
+    font-weight: 400
+
+  #topContainer
+    all: revert
+    if show-menu == 0
+      display: none
+    else
+      display: flex
+      justify-content: center
+
+  #topLeft
+    all: revert
+    if show-menu == 0
+      display: none
+    else
+      & a
+        all: revert
+      & ul
+        padding-left: 0
+        & li
+          color: color-background
+          display: inline-flex
+          & a
+            color: color-accent
+            padding: .5rem
+            &:hover
+              background-color: color-accent
+              color: color-background
+              text-decoration: none
+
+  #topRight
+  #bgLeft
+  #bgRight
+    all: revert
+    display: none
+
+  #middleContainer
+    all: revert
+    align-items: center
+    display: flex
+    flex-direction: column
+
+  #ctitle
+    font-size: 2.25rem
+    font-weight: 700
+    margin: 0
+
+  ul
+    &.comicNav
+      & li
+        & a
+          all: revert
+          background-color: color-background
+          color: color-foreground
+          padding: .5rem
+          text-decoration: none
+      & a
+        &:focus
+        &:hover
+          all: revert
+          background-color: color-foreground
+          color: color-background
+          padding: .5rem
+          text-decoration: none
+
+  #comic
+    & >
+      & img
+        if dim-img == 1
+          opacity: how-dim
+
+  #bottom
+    display: none
